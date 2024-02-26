@@ -13,3 +13,15 @@ async function postJs({ path, bodyParams }) {
 
   return await req.json();
 }
+
+const handelSearch = async (e) => {
+  e.preventDefault();
+  console.log(e.key, e.target);
+  e.target.value = e.target.value + e.key;
+};
+
+const picpikSearch = document.getElementById("picpik-search");
+
+if (picpikSearch) {
+  picpikSearch.addEventListener("keydown", handelSearch);
+}
