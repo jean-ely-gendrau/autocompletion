@@ -1,0 +1,19 @@
+{
+    "name": "app/autocompletion",
+    "description": "project student autocompletion",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\Autocompletion\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jean-ely.gendrau",
+            "email": "jean-ely.gendrau@laplateforme.io"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
