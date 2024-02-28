@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Components;
+namespace App\Autocompletion\Components;
 
-use App\Components\BddConnect;
+use App\Autocompletion\Components\BddConnect;
 
 /**
  * CrudManager
@@ -58,6 +58,21 @@ class CrudManager extends BddConnect
   {
     return $this->_dbConnect;
   }
+
+  /**
+   * Method getByLike
+   *
+   * @return array
+   */
+  public function getByLike(mixed $search, string $columnLike): array
+  {
+    $req = $this->_dbConnect->prepare("SELECT * FROM " . $this->_tableName . " WHERE {$columnLike} LIKE :search LIMIT 10");
+    $req->execute($search);
+    $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $this->_objectClass);
+
+    return $req->fetchAll();
+  }
+
   /**
    * Method getById
    *
@@ -77,9 +92,9 @@ class CrudManager extends BddConnect
   /**
    * Method getAll
    *
-   * @return object
+   * @return array
    */
-  public function getAll(): object
+  public function getAll(): array
   {
     $req = $this->_dbConnect->prepare("SELECT * FROM " . $this->_tableName);
     $req->execute();

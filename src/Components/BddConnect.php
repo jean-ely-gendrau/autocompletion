@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Components;
+namespace App\Autocompletion\Components;
 
 class BddConnect
 {
@@ -10,7 +10,8 @@ class BddConnect
   public function __construct($config = null)
   {
     if (empty($config)) : // Si la config est null on charge le fichier à partir du dossier config
-      $config = json_decode(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . "../../config/config.json"));
+      $configs = json_decode(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . "../../config/config.json"));
+      $config = $configs->database->pdo;
     endif;
 
     $this->dsn = "{$config->dsn}:dbname={$config->bdd};host:{$config->host}";
