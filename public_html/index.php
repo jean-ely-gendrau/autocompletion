@@ -14,8 +14,8 @@ require_once(__DIR__ . DIRECTORY_SEPARATOR . "../vendor/autoload.php");
 <body class="text-sm text-gray-900 border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
   <main>
     <h1 class="text-2xl">Autocompletion JS</h1>
-    <section class="flex flex-col gap-y-2 h-screen drop-shadow-2xl justify-center items-center">
-      <h2 class="text-5xl md:text-8xl font-bold capitalize mb-5">NutriKa Go</h2>
+    <section class="flex flex-col gap-y-2 drop-shadow-2xl items-center mt-[150px]">
+      <h2 class="text-5xl md:text-8xl font-bold capitalize mb-8">NutriKa Go</h2>
 
 
       <form class="max-w-xs w-full sm:lg:max-w-sm md:lg:max-w-md lg:max-w-xl">
