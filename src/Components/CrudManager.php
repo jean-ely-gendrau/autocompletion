@@ -66,7 +66,7 @@ class CrudManager extends BddConnect
    */
   public function getByLike(mixed $search, string $columnLike): array
   {
-    $req = $this->_dbConnect->prepare("SELECT * FROM " . $this->_tableName . " WHERE {$columnLike} LIKE :search LIMIT 10");
+    $req = $this->_dbConnect->prepare("SELECT * FROM " . $this->_tableName . " WHERE {$columnLike} LIKE :search AND JSON_CONTAINS(`jsonFood`, :json) LIMIT 10");
     $req->execute($search);
     $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $this->_objectClass);
 
@@ -83,7 +83,7 @@ class CrudManager extends BddConnect
   public function getById(string $id): object
   {
     $req = $this->_dbConnect->prepare("SELECT * FROM " . $this->_tableName . " WHERE id = :id");
-    $req->execute(array($id));
+    $req->execute(array("id" => intval($id)));
     $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $this->_objectClass);
 
     return $req->fetch();

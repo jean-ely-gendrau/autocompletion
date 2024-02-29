@@ -6,6 +6,13 @@ class FoodsOpens
 {
 
   /**
+   * id
+   *
+   * @var int
+   */
+  public $id;
+
+  /**
    * code
    *
    * @var string

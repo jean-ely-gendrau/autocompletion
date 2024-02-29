@@ -29,7 +29,7 @@ Array.prototype.sortMatchLength = function (searchValue) {
 
   this.forEach((element) => {
     Object.values(this).forEach((val, index) => {
-      console.log(this[index + 1]);
+      //console.log(this[index + 1]);
       /*
       if (
         !val.product_name.toLowerCase().startsWith(searchValue.toLowerCase())
@@ -55,7 +55,7 @@ Array.prototype.sortMatchLength = function (searchValue) {
           //console.log(this);
           // On change sa position dans le de n + 1
           // this.splice(index + 1, 0, val);
-          console.log(objectNoStartWith);
+          //console.log(objectNoStartWith);
           break;
         } else if (
           val.product_name
@@ -90,6 +90,7 @@ Array.prototype.sortMatchLength = function (searchValue) {
       //  Object.values(this).splice(index, 1);
     }
   });
+
   return Object.assign({ start: objectStartWith, end: objectNoStartWith });
 };
 const handelSearch = async (e) => {
@@ -144,13 +145,27 @@ const handelSearch = async (e) => {
 
       console.log("elements", elements);
       Object.values(elements).forEach((element) => {
+        const { nutriscore_grade } = JSON.parse(element.jsonFood);
         //console.log(element);
         const picpikLi = document.createElement("li");
-        picpikLi.setAttribute(
+        const linkElement = document.createElement("a");
+        linkElement.setAttribute(
+          "href",
+          `https://${window.location.hostname}/element.php/?id=${element.id}`
+        );
+        linkElement.setAttribute(
           "class",
           "flex flex-row nowrap items-center justify-between hover:bg-slate-500 text-base font-bold text-slate-950 hover:text-white"
         );
-
+        const imageNutScore = document.createElement("img");
+        imageNutScore.setAttribute(
+          "class",
+          "object-contain w-12 h-10 md:w-20 md:h-18 rounded-md m-2 float-right"
+        );
+        imageNutScore.setAttribute(
+          "src",
+          `https://${window.location.hostname}/assets/images/nutri-score-${nutriscore_grade}.svg`
+        );
         const imageElement = document.createElement("img");
         const spanElement = document.createElement("span");
 
@@ -164,9 +179,9 @@ const handelSearch = async (e) => {
         );
 
         spanElement.textContent = element?.product_name;
-        spanElement.setAttribute("class", "w-2/3 px-5");
-
-        picpikLi.append(spanElement, imageElement);
+        spanElement.setAttribute("class", "w-2/4 px-5");
+        linkElement.append(spanElement, imageNutScore, imageElement);
+        picpikLi.append(linkElement);
         picpikUl.append(picpikLi);
       });
 
