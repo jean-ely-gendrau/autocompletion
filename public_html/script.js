@@ -97,6 +97,10 @@ const handelSearch = async (e) => {
   e.preventDefault();
   //console.log(e.key, e.target);
 
+  // Affin de limiter le nombre de requete , changer le comportement de la fonction
+  // Ajouter une condition si le nombre de lettre minimum est atteint alors on déclanche la requete
+  if (e.target.value.length > 1) {
+  }
   const res = await postJs({
     path: "autocomplete.php",
     bodyParams: { action: "search", likeSearch: e.target.value },
@@ -111,7 +115,7 @@ const handelSearch = async (e) => {
   picpikContentElement.setAttribute("id", "picpik-content");
   picpikContentElement.setAttribute(
     "class",
-    "absolute min-h-20 top-15 start-0 flex flex-col items-center bg-white text-black w-full rounded-md border-2 border-slate-900"
+    "absolute min-h-20 top-15 start-0 flex flex-col items-center bg-white text-black w-full rounded-md border-2 border-slate-900 z-10"
   );
 
   /*
@@ -125,7 +129,7 @@ const handelSearch = async (e) => {
   const clearButtonElement = document.createElement("button");
   clearButtonElement.setAttribute(
     "class",
-    "p-2 my-2 flex justify-center items-center hover:bg-slate-950 justify-self-end bg-slate-800 rounded-md z-1000 text-white capitalize"
+    "p-2 my-2 flex justify-center items-center hover:bg-slate-950 justify-self-end bg-slate-800 rounded-md z-10 text-white capitalize"
   );
   clearButtonElement.setAttribute("id", "buttonClose");
 
@@ -140,7 +144,7 @@ const handelSearch = async (e) => {
       picpikUl.setAttribute("id", `picpik-list-${key}`);
       picpikUl.setAttribute(
         "class",
-        "w-full m-auto divide-y divide-gray-200 dark:divide-gray-700"
+        "w-full m-auto divide-y divide-gray-200 dark:divide-gray-700 z-20"
       );
 
       console.log("elements", elements);
@@ -155,7 +159,7 @@ const handelSearch = async (e) => {
         );
         linkElement.setAttribute(
           "class",
-          "flex flex-row nowrap items-center justify-between hover:bg-slate-500 text-base font-bold text-slate-950 hover:text-white"
+          "flex flex-row nowrap items-center justify-between hover:bg-slate-500 text-base font-bold text-slate-950 hover:text-white z-50"
         );
         const imageNutScore = document.createElement("img");
         imageNutScore.setAttribute(

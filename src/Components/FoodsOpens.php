@@ -76,6 +76,8 @@ class FoodsOpens
 
   public function __get(string $name)
   {
-    return $this->$name;
+    if (property_exists($this, $name)) :
+      return $this->$name;
+    endif;
   }
 }
