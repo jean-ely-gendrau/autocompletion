@@ -1,5 +1,5 @@
 async function postJs({ path, bodyParams }) {
-  const req = await fetch(`https://${window.location.hostname}/api/${path}`, {
+  const req = await fetch(`https://${window.location.hostname}/autocompletion/api/${path}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -168,7 +168,7 @@ const handelSearch = async (e) => {
         );
         imageNutScore.setAttribute(
           "src",
-          `https://${window.location.hostname}/assets/images/nutri-score-${nutriscore_grade}.svg`
+          `https://${window.location.hostname}/autocompletion/assets/images/nutri-score-${nutriscore_grade}.svg`
         );
         const imageElement = document.createElement("img");
         const spanElement = document.createElement("span");
