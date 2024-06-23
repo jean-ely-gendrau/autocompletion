@@ -102,7 +102,7 @@ const handelSearch = async (e) => {
   if (e.target.value.length > 1) {
   }
   const res = await postJs({
-    path: "autocomplete.php",
+    path: "search",
     bodyParams: { action: "search", likeSearch: e.target.value },
   });
 
