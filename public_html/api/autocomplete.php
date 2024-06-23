@@ -10,7 +10,7 @@ use App\Autocompletion\Components\FoodsOpens;
 header('Content-type: application/json; charset=UTF-8;');
 
 if (!empty($_POST['action']) && $_POST['action'] === 'search' && !empty($_POST['likeSearch'])) :
-  $crudManager = new CrudManager('autocomplete', FoodsOpens::class);
+  $crudManager = new CrudManager('jean-ely-gendrau_autocomplete', FoodsOpens::class);
   $likeSearch = "%" . htmlspecialchars(trim($_POST['likeSearch'])) . "%";
 
   // var_dump($crudManager->getAll());
