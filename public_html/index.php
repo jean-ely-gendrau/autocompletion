@@ -7,6 +7,7 @@ require_once(__DIR__ . DIRECTORY_SEPARATOR . "../vendor/autoload.php");
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <bas href="https://jean-ely-gendrau.students-laplateforme.io/autocompletion/" />
   <title>Autocompletion PHP - JS</title>
   <link rel="stylesheet" href="./assets/styles/theme.css">
 </head>
