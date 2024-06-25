@@ -69,7 +69,7 @@ class CrudManager extends BddConnect
     $arraySelectSql = ['search' => $search['search'], 'valueSelected' => 'a', 'itemSelectedStart' => '\"nutriscore_grade\": \"', 'itemSelectedEnd' => '\", '];
     // SQL ^5.7 req = $this->_dbConnect->prepare("SELECT * FROM " . $this->_tableName . " WHERE {$columnLike} LIKE :search AND JSON_CONTAINS(`jsonFood`, :json) LIMIT 10");
     $req = $this->_dbConnect->prepare('SELECT *, SUBSTRING_INDEX(SUBSTRING_INDEX(`jsonFood`, :itemSelectedStart, -1), :itemSelectedEnd, 1) AS item_selected
-          from foodsopens WHERE {$columnLike} LIKE :search AND 
+          from foodsopens WHERE {$columnLike} LIKE :search  
             having item_selected = :valueSelected LIMIT 6');
     // SQL ^5.7 $req->execute($search);
     $req->execute($arraySelectSql);
