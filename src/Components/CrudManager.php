@@ -66,7 +66,7 @@ class CrudManager extends BddConnect
    */
   public function getByLike(mixed $search, string $columnLike): array
   {
-    $arraySelectSql = ['valueSelected' => 'a', 'itemSelectedStart' => '"nutriscore_grade": "', 'itemSelectedEnd' => '", '];
+    $arraySelectSql = ['valueSelected' => 'a', 'itemSelectedStart' => '\"nutriscore_grade\": \"', 'itemSelectedEnd' => '\", '];
     // SQL ^5.7 req = $this->_dbConnect->prepare("SELECT * FROM " . $this->_tableName . " WHERE {$columnLike} LIKE :search AND JSON_CONTAINS(`jsonFood`, :json) LIMIT 10");
     $req = $this->_dbConnect->prepare('SELECT *, SUBSTRING_INDEX(SUBSTRING_INDEX(`jsonFood`, :itemSelectedStart, -1), :itemSelectedEnd, 1) AS item_selected
           from foodsopens
