@@ -67,9 +67,9 @@ class CrudManager extends BddConnect
   public function getByLike(mixed $search, string $columnLike): array
   {
     // SQL ^5.7 req = $this->_dbConnect->prepare("SELECT * FROM " . $this->_tableName . " WHERE {$columnLike} LIKE :search AND JSON_CONTAINS(`jsonFood`, :json) LIMIT 10");
-    $req = $this->_dbConnect->prepare("SELECT *, SUBSTRING_INDEX(SUBSTRING_INDEX(`jsonFood`, '\"nutriscore_grade\": \"', -1), '\", ', 1) AS product_type
+    $req = $this->_dbConnect->prepare('SELECT *, SUBSTRING_INDEX(SUBSTRING_INDEX(`jsonFood`, `"nutriscore_grade": "`, -1), `", `, 1) AS product_type
             from foodsopens
-            having product_type = 'a' LIMIT 10");
+            having product_type = `a` LIMIT 10');
     // SQL ^5.7 $req->execute($search);
     $req->execute();
     $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $this->_objectClass);
